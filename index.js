@@ -3,9 +3,17 @@ const app = express();
 const path = require('path');
 const router = express.Router();
  
-router.get('/', function(req, res){
-    res.sendFile(path.join(__dirname+'/index.html'));
-})
+// Configurando o diretório estático para arquivos como CSS e JavaScript
+app.use(express.static(__dirname));
+
+router.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+// Adicionando rota para inicio.html
+router.get('/inicio.html', function (req, res) {
+    res.sendFile(path.join(__dirname + '/inicio.html'));
+});
  
 app.use('/', router);
  

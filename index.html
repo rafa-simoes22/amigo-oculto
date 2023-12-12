@@ -4,8 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amigo Oculto</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+        }
+        form {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
+    <div class="cont">
+        <h2 id="formTitle">Login</h2>
     
-</body>
+        <div id="loginFormDiv">
+            <form id="loginForm">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" required>
+            <br>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" required>
+            <br>
+            <button type="button" onclick="login()">Login</button>
+            </form>
+            <p>Não tem uma conta? <a href="#" onclick="showCadastroForm()">Cadastre-se</a></p>
+        </div>
+    
+        <div id="cadastroFormDiv" style="display:none;">
+            <form id="cadastroForm">
+            <label for="cadastroUsername">Username:</label>
+            <input type="text" id="cadastroUsername" required>
+            <br>
+            <label for="cadastroPassword">Password:</label>
+            <input type="password" id="cadastroPassword" required>
+            <br>
+            <button type="button" onclick="cadastrar()">Cadastrar</button>
+            </form>
+            <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+        </div>
+    </div>
+  </body>
+  <script>
+    function login() {
+        var username = document.getElementById("loginUsername").value;
+        var password = document.getElementById("loginPassword").value;
+    
+        var storedUser = localStorage.getItem(username);
+        if (storedUser && JSON.parse(storedUser).password === password) {
+            alert("Login bem-sucedido!");
+            window.location.href = "inicio.html";
+        } else {
+            alert("Falha no login. Verifique suas credenciais.");
+        }
+    }
+  
+    function cadastrar() {
+        var username = document.getElementById("cadastroUsername").value;
+        var password = document.getElementById("cadastroPassword").value;
+    
+        // Verifica se o usuário já existe
+        if (localStorage.getItem(username)) {
+            alert("Usuário já cadastrado. Escolha outro username.");
+            return;
+        }
+    
+        // Cria um objeto de usuário e armazena no localStorage
+        var user = { username: username, password: password };
+        localStorage.setItem(username, JSON.stringify(user));
+    
+        alert("Cadastro bem-sucedido!");
+        showLoginForm();
+    }
+  
+    function showCadastroForm() {
+        document.getElementById("loginFormDiv").style.display = "none";
+        document.getElementById("cadastroFormDiv").style.display = "block";
+        document.getElementById("formTitle").innerText = "Cadastro";
+    }
+  
+    function showLoginForm() {
+        document.getElementById("cadastroFormDiv").style.display = "none";
+        document.getElementById("loginFormDiv").style.display = "block";
+        document.getElementById("formTitle").innerText = "Login";
+    }
+  </script>
 </html>
