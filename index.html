@@ -8,10 +8,23 @@
         body {
           font-family: Arial, sans-serif;
           text-align: center;
+          justify-content: center;
+          display: flex;
+          flex-direction: row;
+        }
+        .cont {
+            border: solid;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            align-items: center;
+            margin-top: 15%;
         }
         form {
-          max-width: 300px;
-          margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            align-items: center;
         }
     </style>
 </head>
@@ -21,10 +34,10 @@
     
         <div id="loginFormDiv">
             <form id="loginForm">
-            <label for="loginUsername">Username:</label>
+            <label for="loginUsername">Username</label>
             <input type="text" id="loginUsername" required>
             <br>
-            <label for="loginPassword">Password:</label>
+            <label for="loginPassword">Password</label>
             <input type="password" id="loginPassword" required>
             <br>
             <button type="button" onclick="login()">Login</button>
@@ -34,10 +47,10 @@
     
         <div id="cadastroFormDiv" style="display:none;">
             <form id="cadastroForm">
-            <label for="cadastroUsername">Username:</label>
+            <label for="cadastroUsername">Username</label>
             <input type="text" id="cadastroUsername" required>
             <br>
-            <label for="cadastroPassword">Password:</label>
+            <label for="cadastroPassword">Password</label>
             <input type="password" id="cadastroPassword" required>
             <br>
             <button type="button" onclick="cadastrar()">Cadastrar</button>
