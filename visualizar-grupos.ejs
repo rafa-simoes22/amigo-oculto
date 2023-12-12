@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Grupos</title>
+    <style>
+        /* Adicione estilos conforme necessário */
+    </style>
+</head>
+
+<body>
+    <h1>Grupos Criados</h1>
+
+    <ul id="listaGrupos">
+        <% grupos.forEach(function(grupo) { %>
+            <li>Grupo: <%= grupo.nomeGrupo %>, Membros: <%= grupo.membros.join(', ') %></li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>
